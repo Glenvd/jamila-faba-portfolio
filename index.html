@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jamila Faba — Creative Art Director & Fashion Stylist</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Splash -->
+  <div id="splash">
+    <div class="splash-bg"></div>
+    <div class="splash-content">
+      <p class="splash-eyebrow">Cape Town — Johannesburg — Worldwide</p>
+      <h1 class="splash-name" id="splash-name">Jamila Faba</h1>
+      <p class="splash-title">Creative Art Director &amp; Fashion Stylist</p>
+      <button class="enter-btn" onclick="enterSite()">Enter Portfolio</button>
+    </div>
+  </div>
+
+  <!-- Site -->
+  <div id="site" class="hidden">
+
+    <nav id="navbar">
+      <a href="index.html" class="nav-logo">JF</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Work</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <button class="admin-trigger" id="adminBtn" onclick="toggleAdmin()">Admin</button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-text">
+          <span class="hero-eyebrow">Selected Work</span>
+          <h2 class="hero-headline">Vision.<br><em>Translated.</em></h2>
+        </div>
+        <div class="hero-scroll-hint">↓ Scroll</div>
+      </section>
+
+      <!-- Filter -->
+      <section class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-cat="all" onclick="filter('all', this)">All</button>
+        <button class="filter-btn" data-cat="editorial" onclick="filter('editorial', this)">Editorial</button>
+        <button class="filter-btn" data-cat="commercial" onclick="filter('commercial', this)">Commercial</button>
+        <button class="filter-btn" data-cat="product" onclick="filter('product', this)">Product</button>
+        <button class="upload-btn hidden" id="uploadBtn" onclick="openModal()">+ Add Work</button>
+      </section>
+
+      <!-- Gallery -->
+      <section class="gallery" id="gallery">
+        <div class="empty-state" id="emptyState">
+          <p>No work uploaded yet.</p>
+          <small id="emptyHint">Log in as admin to add images.</small>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-left">
+          <p class="footer-name" id="footerName">Jamila Faba</p>
+          <p class="footer-sub">© 2026 All rights reserved</p>
+        </div>
+        <div class="footer-right">
+          <a href="https://instagram.com/by_jamilafaba" target="_blank" class="footer-link">
+            <span>Instagram</span> @by_jamilafaba
+          </a>
+          <a href="mailto:fabajamila@gmail.com" class="footer-link">
+            <span>Email</span> fabajamila@gmail.com
+          </a>
+          <a href="tel:+27617220495" class="footer-link">
+            <span>Cell</span> +27 (0) 61 722 0495
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Upload Modal -->
+  <div class="modal-overlay hidden" id="modal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h3>Add Portfolio Piece</h3>
+      <div class="field">
+        <label>Category</label>
+        <select id="imgCat">
+          <option value="editorial">Editorial</option>
+          <option value="commercial">Commercial</option>
+          <option value="product">Product</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Image</label>
+        <input type="file" id="imgFile" accept="image/*">
+      </div>
+      <div class="field">
+        <label>Caption (optional)</label>
+        <input type="text" id="imgCaption" placeholder="e.g. Vogue Italia, 2024">
+      </div>
+      <button class="submit-btn" id="submitBtn" onclick="handleUpload()">Upload</button>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox hidden" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lb-close" onclick="closeLightbox()">×</button>
+    <button class="lb-prev" onclick="lbNav(-1)">‹</button>
+    <div class="lb-img-wrap">
+      <img id="lbImg" src="" alt="">
+      <p class="lb-caption" id="lbCaption"></p>
+    </div>
+    <button class="lb-next" onclick="lbNav(1)">›</button>
+  </div>
+
+  <!-- Admin bar -->
+  <div class="admin-bar hidden" id="adminBar">
+    Admin mode active &nbsp;·&nbsp; <button onclick="logoutAdmin()">Log out</button>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
